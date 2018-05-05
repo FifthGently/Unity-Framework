@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Files>
+  <AssetBundle BundleName="atlas/2.res">
+    <File FileName="AAA.png" AssetName="AAA/AAA.png" />
+    <File FileName="CCC 1.png" AssetName="AAA/BBB/CCC/CCC 1.png" />
+  </AssetBundle>
+  <AssetBundle BundleName="atlas/1.res">
+    <File FileName="BBB.png" AssetName="AAA/BBB/BBB.png" />
+    <File FileName="CCC.png" AssetName="AAA/BBB/CCC/CCC.png" />
+  </AssetBundle>
+  <AssetBundle BundleName="aaa/bbb.res">
+    <Dep>atlas/2.res</Dep>
+    <File FileName="Red.mat" AssetName="AAA/BBB/Red.mat" />
+  </AssetBundle>
+  <AssetBundle BundleName="aaa/bbb/ccc/ccc 1.res">
+    <Dep>aaa/bbb.res</Dep>
+    <Dep>atlas/2.res</Dep>
+    <File FileName="CCC 1.prefab" AssetName="AAA/BBB/CCC/CCC 1.prefab" />
+  </AssetBundle>
+  <AssetBundle BundleName="aaa/bbb/ccc.res">
+    <Dep>atlas/1.res</Dep>
+    <File FileName="CCC.mat" AssetName="AAA/BBB/CCC/CCC.mat" />
+  </AssetBundle>
+  <AssetBundle BundleName="resources/guiprefabs/ccc.res">
+    <Dep>aaa/bbb/ccc.res</Dep>
+    <Dep>atlas/1.res</Dep>
+    <File FileName="CCC.prefab" AssetName="Resources/GUIPrefabs/CCC.prefab" />
+  </AssetBundle>
+  <AssetBundle BundleName="resources/guiprefabs/testuiform.res">
+    <File FileName="TestUIForm.prefab" AssetName="Resources/GUIPrefabs/TestUIForm.prefab" />
+  </AssetBundle>
+</Files>

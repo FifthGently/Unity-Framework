@@ -1,0 +1,6 @@
+*.csproj
+*.sln
+Test/*
+/Framework/.vs/
+/Framework/Library/
+/Framework/Temp/
