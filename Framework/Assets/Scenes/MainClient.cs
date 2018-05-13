@@ -6,35 +6,30 @@ using UnityEngine.SceneManagement;
 
 public class MainClient : MonoBehaviour
 {
-    /// <summary>
-    /// 方便开发时一进游戏直接跳到自己的场景
-    /// </summary>
-    public string FirstLoadSceneName = "UI_Scene";
-    /// <summary>
-    /// 加载场景的进度显示的场景名称
-    /// </summary>
-    public string LoadingSceneName = "Loading";
+    public string FirstLoadSceneName = "FirstScene";    // 方便进入游戏时跳转到指定的游戏场景
+    public string LoadingSceneName = "Loading";         // 加载场景的进度显示的场景名称
+
+    public int screenWidth = 1920;                      //场景默认分辨率
+    public int screenHight = 1080;
 
     public string IP = "192.168.0.1";
     public int Icon = 20108;
 
-    public GUI_ID testModule;
-
     private GameManager gameManager;
+
+    public GUI_ID testModule;
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
         Initialize();
     }
 
-    /// <summary>
-    /// 场景初始化
-    /// </summary>
     private void Initialize()
     {
         //Screen.fullScreen = true;
-        Screen.SetResolution(1920, 1080, true);
+        Screen.SetResolution(screenWidth, screenHight, true);
+
         QualitySettings.SetQualityLevel(4);
         QualitySettings.antiAliasing = 4;
         Application.targetFrameRate = 60;
@@ -51,13 +46,12 @@ public class MainClient : MonoBehaviour
         this.gameManager.Initialize(this, FirstLoadSceneName);
         this.gameManager.Start();
 
-
         GameManager.SceneMgr.SetupLoadingScene(LoadingSceneName);
     }
+
     public void Start()
     {
         GameManager.SceneMgr.LoadScene(FirstLoadSceneName);
-
         UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnFirstSceneLoaded;
     }
 

@@ -1,5 +1,9 @@
 namespace Frameworks
 {
+    using System.Collections;
+    using UnityEngine;
+    using UnityEngine.UI;
+
     public class SceneManager
     {
         public string curScene = "";            //当前场景名称
@@ -19,11 +23,12 @@ namespace Frameworks
                 UnityEngine.SceneManagement.SceneManager.LoadScene(loadingSceneName);
         }
 
-        public void LoadSceneByLoading(string sceneName,string _loadingSceneName)
+        public void LoadSceneByLoading(string sceneName, string _loadingSceneName)
         {
             loadingSceneName = _loadingSceneName;
             this.LoadScene(sceneName);
         }
+
         /// <summary>
         /// 不用加载进度条过渡，直接加载指定场景
         /// </summary>

@@ -21,6 +21,7 @@
         public Transform Fixed      { get; private set; }
         public Transform PopUp      { get; private set; }
         public GameObject MaskPanel { get; private set; }
+        public GameObject FadeImage { get; private set; }
         public Camera UICamera      { get; private set; }
         public float UICameralDepth { get; private set; }
 
@@ -71,10 +72,7 @@
         {
             foreach (GUIBase gui in GUIDictionary.Values)
             {
-                if (gui.IsDisplay)
-                {
-                    gui.Update();
-                }
+                if (gui.IsDisplay) gui.Update();
             }
             return true;
         }
@@ -290,11 +288,29 @@
             objMask.AddComponent<UnityEngine.UI.Image>();
             objMask.SetActive(false);
 
+            // FadeImage
+            GameObject objFadeImg = new GameObject("FadeImage");
+            objFadeImg.transform.SetParent(objPopUp.transform);
+            objFadeImg.layer = uiLayer;
+
+            rect = objFadeImg.AddComponent<RectTransform>();
+            rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, 0, 0);
+            rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Top, 0, 0);
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.localScale = Vector3.one;
+
+            UnityEngine.UI.Image img = objFadeImg.AddComponent<UnityEngine.UI.Image>();
+            img.raycastTarget = false;
+            img.color = Color.black;
+            objFadeImg.SetActive(false);
+
             Canvas = objCanvas;
             Normal = objNormal.transform;
             Fixed = objFixed.transform;
             PopUp = objPopUp.transform;
             MaskPanel = objMask;
+            FadeImage = objFadeImg;
             UICamera = _camera;
         }
 

@@ -90,6 +90,16 @@ namespace Frameworks
             this.m_GUIMgr.Start();
         }
 
+        public bool Update()
+        {
+            this.m_GUIMgr.Update();
+            this.m_SoundMgr.Update();
+
+            if (update != null) update();
+
+            return true;
+        }
+
         public void Destroy()
         {
             this.m_GUIMgr.Destroy();
@@ -112,16 +122,6 @@ namespace Frameworks
         private void EventListenerReset()
         {
             //EventProxy.RemoveAllEventListeners();
-        }
-
-        public bool Update()
-        {
-            m_GUIMgr.Update();
-            m_SoundMgr.Update();
-
-            if (update != null) update();
-
-            return true;
         }
 
         public void OnApplicationPause(bool isPause)
